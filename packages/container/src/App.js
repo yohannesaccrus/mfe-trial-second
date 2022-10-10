@@ -1,14 +1,18 @@
-import React from 'react'
+import React                       from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 import AppMarketing from './app/marketing'
 
+import Header from './components/header'
+
 const App = () => {
   return (
-    <>
-      <h1>Container Apps</h1>
-      <hr />
-      <AppMarketing />
-    </>
+    <Router>
+      <div>
+        <Header />
+        <AppMarketing />
+      </div>
+    </Router>
   )
 }
 
