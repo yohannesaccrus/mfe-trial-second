@@ -6,7 +6,14 @@ on:
       - master
     paths:
       - 'packages/container/**'
-  workflow_dispatch
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log Level'
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags'
 
 defaults:
   run:
