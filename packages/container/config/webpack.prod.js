@@ -18,6 +18,7 @@ const configProduction = {
       name    : 'container',
       remotes : {
         appMarketing : `appMarketing@${domain}/marketing/latest/remoteEntry.js`,
+        appAuth : `appAuth@${domain}/auth/latest/remoteEntry.js`,
       },
       shared  : packageJson.dependencies
     })
