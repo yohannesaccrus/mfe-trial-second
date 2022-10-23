@@ -8,9 +8,15 @@ const packageJson  = require('../package.json')
 
 const configDev = {
   mode      : 'development',
+  output    : {
+    publicPath: 'http://localhost:8081/'
+  },
   devServer : {
     port               : 8081,
     historyApiFallback : true
+    // historyApiFallback: {
+    //   index: '/index.html',
+    // },
   },
   plugins   : [
     new ModuleFederationPlugin({

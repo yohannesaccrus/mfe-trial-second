@@ -9,23 +9,23 @@ const packageJson  = require('../package.json')
 const configDev = {
   mode      : 'development',
   output    : {
-    publicPath: 'http://localhost:8080/'
+    publicPath: 'http://localhost:8082/'
   },
   devServer : {
-    port               : 8080,
-    historyApiFallback : true
+    port               : 8082,
     // historyApiFallback: {
     //   index: '/index.html',
     // },
+    historyApiFallback : true
   },
   plugins   : [
     new ModuleFederationPlugin({
-      name    : 'container',
-      remotes : {
-        appMarketing : 'appMarketing@http://localhost:8081/remoteEntry.js',
-        appAuth : 'appAuth@http://localhost:8082/remoteEntry.js',
+      name     : 'appAuth',
+      filename : 'remoteEntry.js',
+      exposes  : {
+        './AppAuth': './src/bootstrap'
       },
-      shared  : packageJson.dependencies
+      shared   : packageJson.dependencies
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html'
