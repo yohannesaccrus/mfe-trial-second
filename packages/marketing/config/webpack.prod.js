@@ -1,26 +1,24 @@
-const { merge } = require('webpack-merge')
-
+const { merge }              = require('webpack-merge')
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin')
+const packageJson            = require('../package.json')
+const commonConfig           = require('./webpack.common')
 
-const configCommon = require('./webpack.common')
-const packageJson  = require('../package.json')
-
-const configProduction = {
-  mode      : 'production',
-  output    : {
+const prodConfig = {
+  mode: 'production',
+  output: {
     filename   : '[name].[contenthash].js',
     publicPath : '/marketing/latest/'
   },
-  plugins   : [
+  plugins: [
     new ModuleFederationPlugin({
-      name     : 'appMarketing',
+      name     : 'marketing',
       filename : 'remoteEntry.js',
       exposes  : {
-        './AppMarketing': './src/bootstrap'
+        './MarketingApp': './src/bootstrap',
       },
-      shared   : packageJson.dependencies
+      shared   : packageJson.dependencies,
     }),
-  ]
+  ],
 }
 
-module.exports = merge(configCommon, configProduction)
+module.exports = merge(commonConfig, prodConfig)

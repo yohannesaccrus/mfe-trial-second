@@ -1,16 +1,16 @@
-import React    from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-import Button         from '@material-ui/core/Button';
-import Card           from '@material-ui/core/Card';
-import CardActions    from '@material-ui/core/CardActions';
-import CardContent    from '@material-ui/core/CardContent';
-import CardMedia      from '@material-ui/core/CardMedia';
-import Grid           from '@material-ui/core/Grid';
-import Typography     from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container      from '@material-ui/core/Container';
-import MaterialLink   from '@material-ui/core/Link';
+import Button from '@material-ui/core/Button'
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
+import { makeStyles } from '@material-ui/core/styles'
+import Container from '@material-ui/core/Container'
+import MaterialLink from '@material-ui/core/Link'
 
 function Copyright() {
   return (
@@ -22,7 +22,7 @@ function Copyright() {
       {new Date().getFullYear()}
       {'.'}
     </Typography>
-  );
+  )
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -60,12 +60,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
-}));
+}))
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 export default function Album() {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <React.Fragment>
@@ -90,7 +90,7 @@ export default function Album() {
             >
               Something short and leading about the collection below—its
               contents, the creator, etc. Make it short and sweet, but not too
-              short so folks don&apos;t simply skip over it entirely.
+              short so folks don&apost simply skip over it entirely.
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justifyContent="center">
@@ -102,9 +102,9 @@ export default function Album() {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link to="/auth/signin">
+                  <Link to="/pricing">
                     <Button variant="outlined" color="primary">
-                      Sign In
+                      Pricing
                     </Button>
                   </Link>
                 </Grid>
@@ -163,5 +163,5 @@ export default function Album() {
       </footer>
       {/* End footer */}
     </React.Fragment>
-  );
+  )
 }

@@ -1,26 +1,33 @@
 import React                     from 'react'
 import { Switch, Route, Router } from 'react-router-dom'
 
-import { StylesProvider, createGenerateClassName } from '@material-ui/core/styles'
+import {
+  StylesProvider,
+  createGenerateClassName,
+} from '@material-ui/core/styles'
 
-import Signin from './pages/auth/signin'
-import Signup from './pages/auth/signup'
+import Signin from './pages/signin'
+import Signup from './pages/signup'
 
-const generateClassName = createGenerateClassName({
-  productionPrefix: 'appAuth'
+const handleClassName = createGenerateClassName({
+  productionPrefix: 'appAuth',
 })
 
-export default ({ history }) => {
+export default ({ history, onSignIn }) => {
   return (
-    <>
-      <StylesProvider generateClassName={generateClassName}>
+    <div>
+      <StylesProvider generateClassName={handleClassName}>
         <Router history={history}>
           <Switch>
-            <Route path="/auth/signin" component={Signin} />
-            <Route path="/auth/signup" component={Signup} />
+            <Route path="/auth/signin">
+              <Signin onSignIn={onSignIn} />
+            </Route>
+            <Route path="/auth/signup">
+              <Signup onSignIn={onSignIn} />
+            </Route>
           </Switch>
         </Router>
       </StylesProvider>
-    </>
+    </div>
   )
 }

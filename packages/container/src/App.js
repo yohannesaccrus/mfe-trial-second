@@ -1,36 +1,37 @@
 import React from 'react'
-import { 
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from 'react-router-dom'
+import { Router, Route, Switch } from 'react-router-dom'
 
-import { StylesProvider, createGenerateClassName } from '@material-ui/core/styles'
+import { createBrowserHistory } from 'history'
 
-import AppMarketing from './app/marketing'
-import AppAuth      from './app/auth'
+import {
+  StylesProvider,
+  createGenerateClassName,
+} from '@material-ui/core/styles'
+
+import AuthApp      from './app/auth'
+import MarketingApp from './app/marketing'
 
 import Header from './components/header'
 
-const generateClassName = createGenerateClassName({
-  productionPrefix: 'appContainer'
+const history = createBrowserHistory()
+
+const handleClassName = createGenerateClassName({
+  productionPrefix: 'appContainer',
 })
 
-const App = () => {
+export default () => {
   return (
-    <Router>
-      <div>
-        <StylesProvider generateClassName={generateClassName}>
+    <Router history={history}>
+      <StylesProvider generateClassName={handleClassName}>
+        <div>
           <Header />
           <Switch>
-            <Route path="/auth" component={AppAuth} />
-            <Route path="/" component={AppMarketing} />
+            <Route path="/auth" component={AuthApp} />
+            <Route path="/" component={MarketingApp} />
           </Switch>
-        </StylesProvider>
-      </div>
+        </div>
+      </StylesProvider>
     </Router>
   )
 }
-
-export default App
 
