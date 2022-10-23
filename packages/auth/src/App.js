@@ -9,7 +9,7 @@ import {
 import Signin from './pages/signin'
 import Signup from './pages/signup'
 
-export default ({ history, onSignIn }) => {
+export default ({ history, handleAuth }) => {
 
   const handleClassName = createGenerateClassName({
     productionPrefix: 'appAuth',
@@ -21,10 +21,10 @@ export default ({ history, onSignIn }) => {
         <Router history={history}>
           <Switch>
             <Route path="/auth/signin">
-              <Signin onSignIn={onSignIn} />
+              <Signin handleAuth={handleAuth} />
             </Route>
             <Route path="/auth/signup">
-              <Signup onSignIn={onSignIn} />
+              <Signup handleAuth={handleAuth} />
             </Route>
           </Switch>
         </Router>

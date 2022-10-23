@@ -1,34 +1,49 @@
-import React, { Suspense, lazy } from 'react'
-import { Router, Route, Switch } from 'react-router-dom'
-
-import { createBrowserHistory } from 'history'
-
+import React, { Suspense, useState, lazy } from 'react'
+import { Router, Route, Switch }           from 'react-router-dom'
 import {
   StylesProvider,
   createGenerateClassName,
 } from '@material-ui/core/styles'
 
-import Header from './components/header'
+import { createBrowserHistory } from 'history'
+
 import Loader from './components/loader'
+import Header from './components/header'
+
+const history = createBrowserHistory()
 
 export default () => {
-  const history = createBrowserHistory()
+  const [isAuth, setIsAuth] = useState(false)
 
-  const AppAuth      = lazy(() => import('./app/auth'))
   const AppMarketing = lazy(() => import('./app/marketing'))
+  const AppAuth = lazy(() => import('./app/auth'))
 
-  const handleClassName = createGenerateClassName({
+  const generateClassName = createGenerateClassName({
     productionPrefix: 'appContainer',
   })
 
+  const handleSignOut = () => {
+    setIsAuth(false)
+  }
+
+  const handleAuth = (authType) => {
+    setIsAuth(true)
+    console.log(authType, 'AuthType')
+  }
+
   return (
     <Router history={history}>
-      <StylesProvider generateClassName={handleClassName}>
+      <StylesProvider generateClassName={generateClassName}>
         <div>
-          <Header />
+          <Header
+            handleSignOut={handleSignOut}
+            isAuth={isAuth}
+          />
           <Suspense fallback={<Loader />}>
             <Switch>
-              <Route path="/auth" component={AppAuth} />
+              <Route path="/auth">
+                <AppAuth handleAuth={handleAuth} />
+              </Route>
               <Route path="/" component={AppMarketing} />
             </Switch>
           </Suspense>
@@ -37,4 +52,5 @@ export default () => {
     </Router>
   )
 }
+
 

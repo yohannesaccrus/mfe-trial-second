@@ -5,7 +5,11 @@ import { createMemoryHistory, createBrowserHistory } from 'history'
 
 import App from './App'
 
-const mount = (el, { handleNavigate, defaultHistory, initialPath }) => {
+const mount = (el, { 
+  initialPath,
+  defaultHistory,
+  handleNavigate
+}) => {
   const history = defaultHistory || createMemoryHistory({
     initialEntries: [initialPath]
   })
@@ -16,9 +20,9 @@ const mount = (el, { handleNavigate, defaultHistory, initialPath }) => {
   return {
     handleMainNavigate({ pathname: nextPathname }) {
       const { pathname } = history.location
-      if (pathname !== nextPathname)
+      if (pathname !== nextPathname) {
         history.push(nextPathname)
-
+      }
     }
   }
 }

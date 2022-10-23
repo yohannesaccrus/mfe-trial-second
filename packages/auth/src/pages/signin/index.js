@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function SignIn({ onSignIn }) {
+export default function SignIn({ handleAuth }) {
   const classes = useStyles()
 
   return (
@@ -101,7 +101,7 @@ export default function SignIn({ onSignIn }) {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={onSignIn}
+            onClick={() => handleAuth('signin')}
           >
             Sign In
           </Button>

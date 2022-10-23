@@ -3,7 +3,7 @@ import { useHistory }               from 'react-router-dom'
 
 import { mount } from 'appAuth/AppAuth'
 
-export default () => {
+export default ({ handleAuth }) => {
   const ref = useRef(null)
   const history = useHistory()
 
@@ -17,6 +17,7 @@ export default () => {
           history.push(nextPathname)
         }
       },
+      handleAuth
     })
 
     history.listen(handleMainNavigate)
