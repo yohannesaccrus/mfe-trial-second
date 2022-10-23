@@ -9,11 +9,12 @@ import {
 import Signin from './pages/signin'
 import Signup from './pages/signup'
 
-const handleClassName = createGenerateClassName({
-  productionPrefix: 'appAuth',
-})
-
 export default ({ history, onSignIn }) => {
+
+  const handleClassName = createGenerateClassName({
+    productionPrefix: 'appAuth',
+  })
+  
   return (
     <div>
       <StylesProvider generateClassName={handleClassName}>

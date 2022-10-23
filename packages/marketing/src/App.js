@@ -6,11 +6,12 @@ import { StylesProvider, createGenerateClassName } from '@material-ui/core/style
 import Landing from './pages/landing'
 import Pricing from './pages/pricing'
 
-const handleClassName = createGenerateClassName({
-  productionPrefix: 'appMarketing',
-})
-
 export default ({ history }) => {
+
+  const handleClassName = createGenerateClassName({
+    productionPrefix: 'appMarketing',
+  })
+  
   return (
     <div>
       <StylesProvider generateClassName={handleClassName}>

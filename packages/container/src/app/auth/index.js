@@ -8,9 +8,9 @@ export default () => {
   const history = useHistory()
 
   useEffect(() => {
-    const { onParentNavigate } = mount(ref.current, {
+    const { handleMainNavigate } = mount(ref.current, {
       initialPath: history.location.pathname,
-      onNavigate: ({ pathname: nextPathname }) => {
+      handleNavigate: ({ pathname: nextPathname }) => {
         const { pathname } = history.location
 
         if (pathname !== nextPathname) {
@@ -19,7 +19,7 @@ export default () => {
       },
     })
 
-    history.listen(onParentNavigate)
+    history.listen(handleMainNavigate)
   }, [])
 
   return <div ref={ref} />

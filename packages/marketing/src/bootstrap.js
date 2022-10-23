@@ -5,16 +5,16 @@ import { createMemoryHistory, createBrowserHistory } from 'history'
 
 import App from './App'
 
-const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
+const mount = (el, { handleNavigate, defaultHistory, initialPath }) => {
   const history = defaultHistory || createMemoryHistory({
     initialEntries: [initialPath]
   })
-  if (onNavigate) {
-    history.listen(onNavigate)
+  if (handleNavigate) {
+    history.listen(handleNavigate)
   }
   ReactDOM.render(<App history={history} />, el)
   return {
-    onParentNavigate({ pathname: nextPathname }) {
+    handleMainNavigate({ pathname: nextPathname }) {
       const { pathname } = history.location
       if (pathname !== nextPathname)
         history.push(nextPathname)
