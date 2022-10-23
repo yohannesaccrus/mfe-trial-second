@@ -1,5 +1,5 @@
-import React, { Suspense, useState, lazy } from 'react'
-import { Router, Route, Switch }           from 'react-router-dom'
+import React, { Suspense, useState, useEffect, lazy } from 'react'
+import { Router, Route, Switch, Redirect }            from 'react-router-dom'
 import {
   StylesProvider,
   createGenerateClassName,
@@ -16,7 +16,8 @@ export default () => {
   const [isAuth, setIsAuth] = useState(false)
 
   const AppMarketing = lazy(() => import('./app/marketing'))
-  const AppAuth = lazy(() => import('./app/auth'))
+  const AppAuth      = lazy(() => import('./app/auth'))
+  const AppDashboard = lazy(() => import('./app/dashboard'))
 
   const generateClassName = createGenerateClassName({
     productionPrefix: 'appContainer',
@@ -31,6 +32,12 @@ export default () => {
     console.log(authType, 'AuthType')
   }
 
+  useEffect(() => {
+    if (isAuth) {
+      history.push('/dashboard')
+    }
+  }, [isAuth])
+
   return (
     <Router history={history}>
       <StylesProvider generateClassName={generateClassName}>
@@ -43,6 +50,10 @@ export default () => {
             <Switch>
               <Route path="/auth">
                 <AppAuth handleAuth={handleAuth} />
+              </Route>
+              <Route path="/dashboard">
+                {!isAuth && <Redirect to="/" />}
+                <AppDashboard />
               </Route>
               <Route path="/" component={AppMarketing} />
             </Switch>
