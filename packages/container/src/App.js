@@ -22,7 +22,6 @@ const App = () => {
       <div>
         <StylesProvider generateClassName={generateClassName}>
           <Header />
-          <p>test</p>
           <Switch>
             <Route path="/auth" component={AppAuth} />
             <Route path="/" component={AppMarketing} />

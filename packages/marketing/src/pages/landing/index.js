@@ -80,7 +80,7 @@ export default function Album() {
               color="textPrimary"
               gutterBottom
             >
-              Home Pagex
+              Home Page
             </Typography>
             <Typography
               variant="h5"
