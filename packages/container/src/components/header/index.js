@@ -80,7 +80,7 @@ const Header = ({ isAuth, handleSignOut }) => {
             component={RouterLink}
             to="/"
           >
-            Appyy
+            App
           </Typography>
           <Button
             color="primary"
